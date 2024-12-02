@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaches Section</title>
+    <!-- <link href="ActiveCoaches.css" rel="stylesheet"> -->
+     <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.coaches-section {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.main-container {
+    border-radius: 18px;
+    background: #ece9e9;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 1200px;
+    height: 95vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    border-radius: 18px 0 0 18px;
+    background: #1a1363;
+    display: flex;
+    width: 280px;
+    flex-direction: column;
+    align-items: start;
+    color: #fff;
+    padding: 2rem 1rem;
+    font: 400 10px Poppins, sans-serif;
+    overflow-y: auto;
+}
+
+.profile-image {
+    aspect-ratio: 1;
+    object-fit: contain;
+    width: 51px;
+    align-self: center;
+}
+
+.admin-name {
+    font-size: 15px;
+    font-weight: 700;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.admin-email {
+    text-align: center;
+    align-self: center;
+    margin-top: 9px;
+}
+
+.nav-item {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    margin: 18px 0 0 13px;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border-radius: 10px 0 0 10px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    width: 20px;
+}
+
+.nav-text {
+    margin: auto 0;
+}
+
+.active-nav-item {
+    background: #ece9e9;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.25);
+    color: #1a1363;
+    font-weight: 700;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    overflow-y: auto;
+    font-family: Poppins, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.notification-icon {
+    width: 78px;
+    height: auto;
+    box-shadow: 0 50px 28px rgba(0, 0, 0, 0.25);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.page-title {
+    color: #1a1363;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    margin: 0 0 1rem 0;
+}
+
+.add-button {
+    border: none;
+    border-radius: 100px;
+    background: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 1.5rem;
+    font-size: 20px;
+    color: #1a1363;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.add-button:hover {
+    transform: translateY(-2px);
+}
+
+.coaches-table {
+    background: #77749b;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 1rem;
+    flex: 1;
+}
+
+.table-header {
+    color: #fffadf;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.table-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.entities-dropdown {
+    background: #5d57a3;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* .table-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    color: #fff;
+} */
+
+.table-header-cell {
+    color: #fffadf;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+.table-cell {
+    padding: 0.5rem;
+}
+
+.action-button {
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #2b2b2b;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+    background: #f0f0f0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination-button {
+    border: none;
+    border-radius: 10px;
+    background: #666385;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination-button:hover {
+    background: #5d57a3;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+@media (max-width: 991px) {
+    .coaches-section {
+        padding: 1rem;
+    }
+
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    /* .table-content {
+        grid-template-columns: 1fr;
+    } */
+    .members-list {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .add-button,
+    .nav-item,
+    .action-button,
+    .pagination-button {
+        transition: none;
+    }
+}
+     </style>
+
+</head>
+<body>
+    <div class="coaches-section">
+        <div class="main-container">
+            <div class="content-wrapper">
+                <aside class="sidebar" role="navigation">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/82939e4fdec79a94d1447884de3fc2e2a65da2e919fc18dcf03e138c27eb9bc3?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="Administrator profile" class="profile-image" />
+                    {% for user in users%}
+                    {%if user.account_type == "admin"%}
+
+                    <div class="admin-name">{{user.name}}</div>
+                    <div class="admin-email">{{user.email}}</div>
+                    {%endif%}
+                    {%endfor%}
+                    <nav>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5b1e5633d6552fb186cda6d7b018a7309401bc6476ac546ea456b7a53218ee2?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Dashboard</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbff539d3332e2857af5b323dbeb00a14a41ed398999bfd9808de8cdc1134d8c?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Admin Profile</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/924cd441e1c0088fd992bf81e391ca48c62c1aed5c4175f8e7e0017d16337df3?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Registration</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1e5c6616e1490e1e4c3d0755c05853eeee4789686c4ce528ce73d1c1f04af5a?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Plan</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf2141a49a8af6d897af6f3d589b2de8eed81be37dd998dff36157d5d85fc576?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Payment</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f4bc3dead8c4862b4cd10c9d0eae9cd8f144ba9225ceab2e5f592f058254faca?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Inventory</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/86184e038a7647fc42fa716208a0f37c701e13b2b4ed3f3d3bb780f80a2e6972?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">View Members</span>
+                        </div>
+                        <div class="active-nav-item nav-item" role="button" tabindex="0" aria-current="page">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/03119b4ce916fd493596a245d2b2548910907c2bff45b9119ffdf0482ecf13f8?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Coaches</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7e1fbdd3b6a9d09d001c80401b55378ebb2492cc13a1b89102777dbb4045713?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Report</span>
+                        </div>
+                        <div class="nav-item" role="button" tabindex="0">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f28fd7f20fa2518cf9b3c5aa375d07b3a5f2afc60eeb96d9f56bfc2ee21cd6c2?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="nav-icon" aria-hidden="true" />
+                            <span class="nav-text">Logout</span>
+                        </div>
+                    </nav>
+                </aside>
+
+                <main class="main-content">
+                    <header class="header">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea58de615482b6fbb8bdb9990c83b114973529133782fdc8e652424da510dbaf?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="Notification bell" class="notification-icon" />
+                        <div class="header-actions">
+                            <button class="action-button">Feedback</button>
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/88f76617d1f7973f3a5fc6350dbeb11f5a5f56fea520051ecd009a3792223ba3?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="Settings" class="nav-icon" />
+                        </div>
+                    </header>
+
+                    <section aria-label="Coaches management">
+                        <h1 class="page-title">Active Coaches</h1>
+                        <button class="add-button">Add Coach</button>
+
+                        <section class="coaches-table" aria-label="Members List">
+                            <div class="table-controls">
+                              <div class="search-wrapper" role="search">
+                                <label for="member-search" class="visually-hidden">Search members</label>
+                                <input type="search" id="member-search" class="search-input" placeholder="Search" />
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4ed149670bc0bcf0da5b63259ca02271f737bf878bed0e5f40d4221f85925caa?placeholderIfAbsent=true&apiKey=e9d236d8c0c94057ac283d5229bb03b9" alt="" class="search-icon" aria-hidden="true" />
+                              </div>
+                  
+                              <div class="table-actions">
+                                <label for="entries-select" class="show-entries">Show Entities</label>
+                                <select id="entries-select" class="entries-select">
+                                  <option value="10">10</option>
+                                  <option value="20">20</option>
+                                  <option value="50">50</option>
+                                </select>
+                              </div>
+                            </div>
+                  
+                            <table class="members-list" role="grid">
+                              <thead>
+                                <tr>
+                                  
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Member ID</th>
+                                  <th scope="col">Date Enrolled</th>
+                                  
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  {% for user in users %}
+                                    {% if user.account_type == "coach" %}
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.user_id}}</td>
+                                    <td>{{user.created_at}}</td>
+                                    
+                                    
+                                  </tr>
+                                    {% endif %}
+                                {% endfor %}
+                               
+                               
+                              </tbody>
+                            </table>
+                  
+                            <div class="pagination" role="navigation" aria-label="Pagination">
+                              <button class="page-button" aria-label="Previous page" disabled>Previous</button>
+                              <button class="page-button" aria-label="Next page">Next</button>
+                            </div>
+                          </section>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
